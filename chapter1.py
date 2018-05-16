@@ -155,17 +155,24 @@ for salary, tenure in salaries_and_tenures:
 # Keys are years, each value is average salary for that tenure
 average_salary_by_bucket = {
     tenure_bucket: sum(salaries) / len(salaries)
-    for tenure_bucket, salaries in salary_by_tenure_bucket.iteritems()
+    for tenure_bucket, salaries in salary_by_tenure_bucket.items()
 }
-
-
 
 # Test chapter one statements and functions
 if __name__=="__main__":
 
+    # Test Finding key Connectors section
     print("\n")
     print([friend["id"] for friend in users[0]["friends"]])        # [1,2]
     print([friend["id"] for friend in users[1]["friends"]])        # [0,2,3]
     print([friend["id"] for friend in users[2]["friends"]], "\n")        # [0,1,3]
 
     print(friend_of_friend_ids(users[3]))    # Counter({0:2, 5:1})
+
+    # Test Data scientists you may know section
+
+    print(data_scientists_who_like(1))
+
+    # Test Salaries and Experience section
+    print(tenure_bucket(3))
+    print(tenure_bucket(122))
