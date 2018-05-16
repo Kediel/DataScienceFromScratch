@@ -119,6 +119,46 @@ def most_common_interests_with(user):
 
 ################################ Salaries and Experience ################################
 
+# Keys are years, values are lists of the salaries for each tenure
+salary_by_tenure = defaultdict(list)
+
+for salary, tenure in salaries_and_tenures:
+
+    salary_by_tenure[tenure].append(salary)
+
+# Keys are years, each value is average salary for that tenure
+average_salary_by_tenure = {
+    tenure: sum(salaries) / len(salaries)
+    for tenure, salaries in salary_by_tenure.items()
+}
+
+def tenure_bucket(tenure):
+
+    if tenure < 2:
+
+        return "Less than two"
+    elif tenure < 5:
+
+        return "Between two and five"
+    else:
+
+        return "More than five"
+
+# Keys are tenure buckets, values are lists of salaries for that bucket
+salary_by_tenure_bucket = defaultdict(list)
+
+for salary, tenure in salaries_and_tenures:
+
+    bucket = tenure_bucket(tenure)
+    salary_by_tenure_bucket[bucket].append(salary)
+
+# Keys are years, each value is average salary for that tenure
+average_salary_by_bucket = {
+    tenure_bucket: sum(salaries) / len(salaries)
+    for tenure_bucket, salaries in salary_by_tenure_bucket.iteritems()
+}
+
+
 
 # Test chapter one statements and functions
 if __name__=="__main__":
