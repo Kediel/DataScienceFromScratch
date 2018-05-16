@@ -188,29 +188,49 @@ for word, count in words_and_counts.most_common():
 # Test chapter one statements and functions
 if __name__=="__main__":
 
-    # Test Finding key Connectors section
-    print("\n")
-    print([friend["id"] for friend in users[0]["friends"]])        # [1,2]
-    print([friend["id"] for friend in users[1]["friends"]])        # [0,2,3]
-    print([friend["id"] for friend in users[2]["friends"]], "\n")        # [0,1,3]
+    print()
+    print("######################")
+    print("#")
+    print("# FINDING KEY CONNECTORS")
+    print("#")
+    print("######################\n")
 
-    print(friend_of_friend_ids(users[3]))    # Counter({0:2, 5:1})
+    print("total connections", total_connections)
+    print("number of users", num_users)
+    print("average connections", total_connections / num_users, "\n")
 
-    # Test Data scientists you may know section
+    # create a list (user_id, number_of_friends)
+    num_friends_by_id = [(user["id"], number_of_friends(user))
+                         for user in users]
 
-    print(data_scientists_who_like(1))
+    '''print("users sorted by number of friends:", sorted(num_friends_by_id,
+           key=lambda (user_id, num_friends): num_friends,  # by number of friends
+           reverse=True), "\n")  # largest to smallest '''
 
-    # Test Salaries and Experience section
-    print(tenure_bucket(3))
-    print(tenure_bucket(122))
+    print("######################")
+    print("#")
+    print("# DATA SCIENTISTS YOU MAY KNOW")
+    print("#")
+    print("######################\n")
 
-    # Test Paid accounts section
-    print(predict_paid_or_unpaid(3))
-    print(predict_paid_or_unpaid(1000000))
+    print("friends of friends bad for user 0:", friends_of_friend_ids_bad(users[0]))
+    print("friends of friends for user 3:", friend_of_friend_ids(users[3]), "\n")
 
-    # Test Topics of interest section
-    print(words_and_counts)
+    print("######################")
+    print("#")
+    print("# SALARIES AND TENURES")
+    print("#")
+    print("######################\n")
+
+    print("average salary by tenure", average_salary_by_tenure)
+    print("average salary by tenure bucket", average_salary_by_bucket, "\n")
+
+    print("######################")
+    print("#")
+    print("# MOST COMMON WORDS")
+    print("#")
+    print("######################\n")
+
     for word, count in words_and_counts.most_common():
-
         if count > 1:
             print(word, count)
