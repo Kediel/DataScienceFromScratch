@@ -158,6 +158,33 @@ average_salary_by_bucket = {
     for tenure_bucket, salaries in salary_by_tenure_bucket.items()
 }
 
+################################ Paid Accounts ################################
+def predict_paid_or_unpaid(years_experience):
+
+    if years_experience < 3.0:
+
+        return "paid"
+
+    elif years_experience < 8.5:
+
+        return "unpaid"
+
+    else:
+
+        return "paid"
+
+################################ Topics of Interest ################################
+words_and_counts = Counter(word for user, interest in interests
+                           for word in interest.lower().split())
+
+for word, count in words_and_counts.most_common():
+
+    if count > 1:
+
+        print(word, count)
+
+
+
 # Test chapter one statements and functions
 if __name__=="__main__":
 
@@ -176,3 +203,14 @@ if __name__=="__main__":
     # Test Salaries and Experience section
     print(tenure_bucket(3))
     print(tenure_bucket(122))
+
+    # Test Paid accounts section
+    print(predict_paid_or_unpaid(3))
+    print(predict_paid_or_unpaid(1000000))
+
+    # Test Topics of interest section
+    print(words_and_counts)
+    for word, count in words_and_counts.most_common():
+
+        if count > 1:
+            print(word, count)
