@@ -119,7 +119,7 @@ def scatterplots():
 
 def scatterplot_axes(equal_axes = False):
 
-        plt.scattter(test_1_grades, test_2_grades)
+        plt.scatter(test_1_grades, test_2_grades)
         plt.title("Axes aren't comparable")
         plt.xlabel("Test 1 grade")
         plt.ylabel("Test 2 grade")
